@@ -1,0 +1,16 @@
+PODS:
+  - YJCoreText (0.1.0)
+
+DEPENDENCIES:
+  - YJCoreText (from `../`)
+
+EXTERNAL SOURCES:
+  YJCoreText:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  YJCoreText: 12dd6753c0abcdcfc968fff578c58f755b955ff7
+
+PODFILE CHECKSUM: a0fbf1e22b93d9a9cf2ffba98f0b33fad70e8101
+
+COCOAPODS: 1.7.0.beta.3
