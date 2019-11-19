@@ -1,22 +1,42 @@
 {
   "name": "YJCoreText",
-  "version": "0.1.0",
-  "summary": "A short description of YJCoreText.",
+  "version": "1.0.0",
+  "summary": "YJCoreText.",
   "description": "TODO: Add long description of the pod here.",
-  "homepage": "https://github.com/lyj/YJCoreText",
+  "homepage": "https://github.com/LYajun/YJCoreText",
   "license": {
     "type": "MIT",
     "file": "LICENSE"
   },
   "authors": {
-    "lyj": "liuyajun1999@icloud.com"
+    "LYajun": "liuyajun1999@icloud.com"
   },
   "source": {
-    "git": "https://github.com/lyj/YJCoreText.git",
-    "tag": "0.1.0"
+    "git": "https://github.com/LYajun/YJCoreText.git",
+    "tag": "1.0.0"
   },
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "YJCoreText/Classes/**/*"
+  "requires_arc": true,
+  "subspecs": [
+    {
+      "name": "Model",
+      "source_files": "YJCoreText/Classes/Model/**/*",
+      "dependencies": {
+        "YJExtensions": [
+
+        ]
+      }
+    },
+    {
+      "name": "YJDrawView",
+      "source_files": "YJCoreText/Classes/YJDrawView/**/*",
+      "dependencies": {
+        "YJCoreText/Model": [
+
+        ]
+      }
+    }
+  ]
 }

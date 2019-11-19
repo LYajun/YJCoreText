@@ -1,16 +1,41 @@
 PODS:
-  - YJCoreText (0.1.0)
+  - Masonry (1.1.0)
+  - TFHpple (2.0.0)
+  - YJCoreText (1.0.0):
+    - YJCoreText/Model (= 1.0.0)
+    - YJCoreText/YJDrawView (= 1.0.0)
+  - YJCoreText/Model (1.0.0):
+    - YJExtensions
+  - YJCoreText/YJDrawView (1.0.0):
+    - YJCoreText/Model
+  - YJExtensions (1.2.0):
+    - YJExtensions/Foundation (= 1.2.0)
+    - YJExtensions/UIKit (= 1.2.0)
+  - YJExtensions/Foundation (1.2.0):
+    - TFHpple
+  - YJExtensions/UIKit (1.2.0):
+    - YJExtensions/Foundation
 
 DEPENDENCIES:
+  - Masonry
   - YJCoreText (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Masonry
+    - TFHpple
+    - YJExtensions
 
 EXTERNAL SOURCES:
   YJCoreText:
     :path: "../"
 
 SPEC CHECKSUMS:
-  YJCoreText: 12dd6753c0abcdcfc968fff578c58f755b955ff7
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  TFHpple: a916fe0799eb30aa29b2670d14d5868cdd3a5b81
+  YJCoreText: 798c59e095fcd0f4f7d5e3269aa49a3d2463c823
+  YJExtensions: ec7a9bd9b0afddd431142aef6d7b6437b74c382e
 
-PODFILE CHECKSUM: a0fbf1e22b93d9a9cf2ffba98f0b33fad70e8101
+PODFILE CHECKSUM: 7a65c1b527930a42d01d0594636ae0148933dd23
 
 COCOAPODS: 1.7.0.beta.3

@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'YJCoreText'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of YJCoreText.'
+  s.version          = '1.0.0'
+  s.summary          = 'YJCoreText.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -21,22 +21,22 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/lyj/YJCoreText'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.homepage         = 'https://github.com/LYajun/YJCoreText'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'lyj' => 'liuyajun1999@icloud.com' }
-  s.source           = { :git => 'https://github.com/lyj/YJCoreText.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.author           = { 'LYajun' => 'liuyajun1999@icloud.com' }
+  s.source           = { :git => 'https://github.com/LYajun/YJCoreText.git', :tag => s.version.to_s }
+
 
   s.ios.deployment_target = '8.0'
-
-  s.source_files = 'YJCoreText/Classes/**/*'
+  s.requires_arc = true
   
-  # s.resource_bundles = {
-  #   'YJCoreText' => ['YJCoreText/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.subspec 'Model' do |model|
+      model.source_files = 'YJCoreText/Classes/Model/**/*'
+      model.dependency 'YJExtensions'
+  end
+  
+  s.subspec 'YJDrawView' do |drawView|
+      drawView.source_files = 'YJCoreText/Classes/YJDrawView/**/*'
+      drawView.dependency 'YJCoreText/Model'
+  end
 end
