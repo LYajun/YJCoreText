@@ -86,7 +86,7 @@
 }
 
 - (CGSize)intrinsicContentSize {
-    return [self sizeThatFits:CGSizeMake(self.bounds.size.width, MAXFLOAT)];
+    return [self sizeThatFits:CGSizeMake(self.bounds.size.width, 10000)];
 }
 
 // truncationToken, truncationActionHandler, text, textColor, font, shadowColor, shadowOffset, shadowAlpha, lineSpacing, paragraphSpacing, textAlignment 这些属性走转发流程
