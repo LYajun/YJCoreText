@@ -20,13 +20,19 @@
 @dynamic truncationToken, truncationActionHandler, text, textColor, font, shadowColor, shadowOffset, shadowAlpha, lineSpacing, paragraphSpacing, textAlignment;
 
 - (void)addString:(NSString *)string attributes:(NSDictionary *)attributes{
-    [self.data addString:string attributes:attributes];
+    [self.data addString:string attributes:attributes clickActionHandler:nil];
+}
+
+- (void)addString:(NSString *)string attributes:(NSDictionary *)attributes clickActionHandler:(YJClickActionHandler)clickActionHandler{
+    [self.data addString:string attributes:attributes clickActionHandler:clickActionHandler];
 }
 
 - (void)addAttributedString:(NSAttributedString *)attr{
-    [self.data addAttributedString:attr];
+    [self.data addAttributedString:attr clickActionHandler:nil];
 }
-
+- (void)addAttributedString:(NSAttributedString *)attr clickActionHandler:(YJClickActionHandler)clickActionHandler{
+    [self.data addAttributedString:attr clickActionHandler:clickActionHandler];
+}
 - (void)addLink:(NSString *)link clickActionHandler:(YJClickActionHandler)clickActionHandler{
     [self.data addLink:link clickActionHandler:clickActionHandler];
 }
@@ -162,7 +168,7 @@
         YJBaseCoreTextItem *clickedItem = [self.data itemAtPoint:point];
         self.clickedItem = clickedItem;
         NSLog(@"clickedItem = %@", clickedItem);
-        if (clickedItem) {
+        if (clickedItem && clickedItem.clickActionHandler) {
             [self addClickableCoverWithItem:clickedItem];
         }
     }

@@ -19,6 +19,9 @@ NSString * const YJRunMetaData = @"runMetaData";
 @property (nonatomic, strong) NSMutableAttributedString *attributeString;
 @property (nonatomic, assign) CTFrameRef ctFrame;
 
+/* 文本数据 */
+@property (nonatomic, strong) NSMutableArray<YJTextItem *> *texts;
+
 /* 链接数据 */
 @property (nonatomic, strong) NSMutableArray<YJLinkItem *> *links;
 
@@ -54,14 +57,22 @@ NSString * const YJRunMetaData = @"runMetaData";
 }
 
 #pragma mark - Public
-- (void)addString:(NSString *)string attributes:(NSDictionary *)attributes{
+
+- (void)addString:(NSString *)string attributes:(NSDictionary *)attributes clickActionHandler:(YJClickActionHandler)clickActionHandler{
     YJTextItem *textItem = [YJTextItem new];
-    textItem.content = string;
-    NSAttributedString *textAttributeString = [[NSAttributedString alloc] initWithString:textItem.content attributes:attributes];
-    [self.attributeString appendAttributedString:textAttributeString];
+    textItem.contentAttr = [[NSAttributedString alloc] initWithString:string attributes:attributes];
+    textItem.clickActionHandler = clickActionHandler;
+  
+    [self.texts addObject:textItem];
+    [self.attributeString appendAttributedString:[self textAttributeStringWithTextItem:textItem]];
 }
-- (void)addAttributedString:(NSAttributedString *)attr{
-    [self.attributeString appendAttributedString:attr];
+
+- (void)addAttributedString:(NSAttributedString *)attr clickActionHandler:(YJClickActionHandler)clickActionHandler{
+    YJTextItem *textItem = [YJTextItem new];
+    textItem.contentAttr = attr;
+    textItem.clickActionHandler = clickActionHandler;
+    [self.texts addObject:textItem];
+    [self.attributeString appendAttributedString:[self textAttributeStringWithTextItem:textItem]];
 }
 - (void)addLink:(NSString *)link clickActionHandler:(YJClickActionHandler)clickActionHandler{
     YJLinkItem *linkItem = [YJLinkItem new];
@@ -160,6 +171,11 @@ NSString * const YJRunMetaData = @"runMetaData";
             return item;
         }
     }
+    for (YJBaseCoreTextItem *item in self.texts) {
+        if ([item containsPoint:point]) {
+            return item;
+        }
+    }
     return nil;
 }
 
@@ -196,6 +212,15 @@ NSString * const YJRunMetaData = @"runMetaData";
                                 };
     CFAttributedStringSetAttribute((CFMutableAttributedStringRef)linkAttributeString, CFRangeMake(0, linkItem.link.length), (CFStringRef)YJExtraDataAttributeName, (__bridge CFTypeRef)(extraData));
     return linkAttributeString;
+}
+
+- (NSAttributedString *)textAttributeStringWithTextItem:(YJTextItem *)textItem {
+    NSMutableAttributedString *textAttributeString = [[NSMutableAttributedString alloc] initWithAttributedString:textItem.contentAttr];
+    NSDictionary *extraData = @{YJExtraDataAttributeTypeKey: @(YJDataTypeLink),
+                                YJExtraDataAttributeDataKey: textItem,
+                                };
+    CFAttributedStringSetAttribute((CFMutableAttributedStringRef)textAttributeString, CFRangeMake(0, textItem.contentAttr.length), (CFStringRef)YJExtraDataAttributeName, (__bridge CFTypeRef)(extraData));
+    return textAttributeString;
 }
 
 - (void)updateAttachment:(YJAttachmentItem *)attachment withFont:(UIFont *)font {
@@ -506,6 +531,13 @@ static CGFloat getWidth(void *ref) {
         _attachments = [NSMutableArray array];
     }
     return _attachments;
+}
+
+- (NSMutableArray<YJTextItem *> *)texts{
+    if (!_texts) {
+        _texts = [NSMutableArray array];
+    }
+    return _texts;
 }
 
 - (NSMutableArray *)links {

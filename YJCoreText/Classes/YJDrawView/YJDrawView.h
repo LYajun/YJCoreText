@@ -41,8 +41,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** 添加自定义的字符串并且设置字符串属性 */
 - (void)addString:(NSString *)string attributes:(NSDictionary *)attributes;
+- (void)addString:(NSString *)string attributes:(NSDictionary *)attributes clickActionHandler:(nullable YJClickActionHandler)clickActionHandler;
 
 - (void)addAttributedString:(NSAttributedString *)attr;
+- (void)addAttributedString:(NSAttributedString *)attr clickActionHandler:(nullable YJClickActionHandler)clickActionHandler;
 
 /** 添加链接 */
 - (void)addLink:(NSString *)link clickActionHandler:(nullable YJClickActionHandler)clickActionHandler;

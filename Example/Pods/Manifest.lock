@@ -1,12 +1,12 @@
 PODS:
   - Masonry (1.1.0)
   - TFHpple (2.0.0)
-  - YJCoreText (1.0.1):
-    - YJCoreText/Model (= 1.0.1)
-    - YJCoreText/YJDrawView (= 1.0.1)
-  - YJCoreText/Model (1.0.1):
+  - YJCoreText (1.0.2):
+    - YJCoreText/Model (= 1.0.2)
+    - YJCoreText/YJDrawView (= 1.0.2)
+  - YJCoreText/Model (1.0.2):
     - YJExtensions
-  - YJCoreText/YJDrawView (1.0.1):
+  - YJCoreText/YJDrawView (1.0.2):
     - YJCoreText/Model
   - YJExtensions (1.2.0):
     - YJExtensions/Foundation (= 1.2.0)
@@ -33,7 +33,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   TFHpple: a916fe0799eb30aa29b2670d14d5868cdd3a5b81
-  YJCoreText: acf559db87f0a9e0452d840274538ecb0347204d
+  YJCoreText: a595eb95f78f34000547278fd856fbe8ac43e0af
   YJExtensions: ec7a9bd9b0afddd431142aef6d7b6437b74c382e
 
 PODFILE CHECKSUM: 7a65c1b527930a42d01d0594636ae0148933dd23

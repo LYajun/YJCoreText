@@ -61,9 +61,10 @@ typedef NS_ENUM(NSUInteger, YJDataType) {
 @property (nonatomic, assign) CTTextAlignment textAlignment;
 
 
-- (void)addString:(NSString *)string attributes:(NSDictionary *)attributes;
 
-- (void)addAttributedString:(NSAttributedString *)attr;
+- (void)addString:(NSString *)string attributes:(NSDictionary *)attributes clickActionHandler:(nullable YJClickActionHandler)clickActionHandler;
+
+- (void)addAttributedString:(NSAttributedString *)attr clickActionHandler:(nullable YJClickActionHandler)clickActionHandler;
 
 - (void)addLink:(NSString *)link clickActionHandler:(YJClickActionHandler)clickActionHandler;
 

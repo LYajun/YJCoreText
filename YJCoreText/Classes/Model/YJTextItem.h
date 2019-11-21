@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface YJTextItem : YJBaseCoreTextItem
-@property (nonatomic, copy) NSString *content;
+@property (nonatomic, strong) NSAttributedString *contentAttr;
 @end
 
 NS_ASSUME_NONNULL_END
